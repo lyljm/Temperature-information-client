@@ -1,0 +1,83 @@
+JFDML JFormDesigner: "8.1.1.0.298" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.autoExternalize": true
+	"i18n.bundlePackage": "org.com.RDcenter.UI"
+	"i18n.bundleName": "mainFrame"
+	"i18n.keyPrefix": "SqlDialog"
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class javax.swing.BoxLayout ) {
+			"axis": 2
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+				"$columnSpecs": "default, labelcompgap, default:grow"
+				"$rowSpecs": "default, linegap, default, linegap, default, linegap, default"
+			} ) {
+				name: "panel1"
+				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 18 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "urlLable"
+					"text": new FormMessage( null, "SqlDialog.urlLable.text" )
+					"font": new java.awt.Font( "Microsoft YaHei UI", 0, 18 )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "urlText"
+					"columns": 40
+					"font": new java.awt.Font( "Microsoft YaHei UI", 0, 18 )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "userLable"
+					"text": new FormMessage( null, "SqlDialog.userLable.text" )
+					"font": new java.awt.Font( "Microsoft YaHei UI", 0, 18 )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 3
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "userText"
+					"font": new java.awt.Font( "Microsoft YaHei UI", 0, 18 )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "pwdLable"
+					"text": new FormMessage( null, "SqlDialog.pwdLable.text" )
+					"font": new java.awt.Font( "Microsoft YaHei UI", 0, 18 )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 5
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "pwdText"
+					"font": new java.awt.Font( "Microsoft YaHei UI", 0, 18 )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 5
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "resetBtn"
+					"text": new FormMessage( null, "SqlDialog.resetBtn.text" )
+					"font": new java.awt.Font( "Microsoft YaHei UI", 0, 18 )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "resetBtnClicked", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 7
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "submitBtn"
+					"text": new FormMessage( null, "SqlDialog.submitBtn.text" )
+					"font": new java.awt.Font( "Microsoft YaHei UI", 0, 18 )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "submitBtnClicked", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 7
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 50, 5 )
+			"size": new java.awt.Dimension( 800, 540 )
+		} )
+	}
+}

@@ -1,0 +1,105 @@
+JFDML JFormDesigner: "8.1.1.0.298" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.autoExternalize": true
+	"i18n.bundlePackage": "org.com.RDcenter.UI"
+	"i18n.bundleName": "mainFrame"
+	"i18n.keyPrefix": "MainFrame"
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"title": "测温枪采集程序"
+			"$sizePolicy": 1
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) {
+				"hgap": 5
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "mqttCon"
+					"text": new FormMessage( null, "MainFrame.mqttCon.text" )
+					"foreground": new java.awt.Color( 255, 51, 51, 255 )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "West"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "sqlCon"
+					"text": new FormMessage( null, "MainFrame.sqlCon.text" )
+					"foreground": new java.awt.Color( 255, 0, 0, 255 )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "clientIDLable"
+					"text": new FormMessage( null, "MainFrame.clientIDLable.text" )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "East"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "South"
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "textArea1"
+					"lineWrap": true
+					"font": new java.awt.Font( "Monospaced", 1, 18 )
+					"foreground": sfield java.awt.Color black
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
+				name: "menuBar1"
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "serviceMenu"
+					"text": new FormMessage( null, "MainFrame.serviceMenu.text" )
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "startItem"
+						"text": new FormMessage( null, "MainFrame.startItem.text" )
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "startItemClicked", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "stopItem"
+						"text": new FormMessage( null, "MainFrame.stopItem.text" )
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "stopItemClicked", true ) )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "configMenu"
+					"text": new FormMessage( null, "MainFrame.configMenu.text" )
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "sqlItem"
+						"text": new FormMessage( null, "MainFrame.sqlItem.text" )
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "sqlItemClicked", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "connectItem"
+						"text": new FormMessage( null, "MainFrame.connectItem.text" )
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "connectItemClickDialog", true ) )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "DeviceMenu"
+					"text": new FormMessage( null, "MainFrame.DeviceMenu.text" )
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "exitMenu"
+					"text": new FormMessage( null, "MainFrame.exitMenu.text" )
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "exitMenuMouseClicked", true ) )
+				} )
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 760, 690 )
+		} )
+	}
+}

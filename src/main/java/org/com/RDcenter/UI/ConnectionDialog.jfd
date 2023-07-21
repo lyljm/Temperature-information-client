@@ -1,0 +1,140 @@
+JFDML JFormDesigner: "8.1.1.0.298" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.autoExternalize": true
+	"i18n.bundlePackage": "org.com.RDcenter.UI"
+	"i18n.bundleName": "mainFrame"
+	"i18n.keyPrefix": "sqlDialog"
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class javax.swing.BoxLayout ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+				"$columnSpecs": "default, labelcompgap, default:grow, labelcompgap, default"
+				"$rowSpecs": "default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default"
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "urlLable"
+					"text": new FormMessage( null, "sqlDialog.urlLable.text" )
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 1
+					"gridY": 1
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "urlText"
+					"columns": 20
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "clientIdLable"
+					"text": new FormMessage( null, "sqlDialog.clientIdLable.text" )
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 1
+					"gridY": 3
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "clientIdText"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 3
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "randomBtn"
+					"text": new FormMessage( null, "sqlDialog.randomBtn.text" )
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "randomBtnClicked", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 5
+					"gridY": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "userLable"
+					"text": new FormMessage( null, "sqlDialog.userLable.text" )
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 1
+					"gridY": 5
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "userText"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 5
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "pwdLable"
+					"text": new FormMessage( null, "sqlDialog.pwdLable.text" )
+					"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 1
+					"gridY": 7
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "pwdText"
+					"font": &SwingDerivedFont1 new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 7
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "topicLable"
+					"text": new FormMessage( null, "sqlDialog.topicLable.text" )
+					"font": #SwingDerivedFont0
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 9
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "topicText"
+					"font": #SwingDerivedFont1
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 9
+					"gridX": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "pwdLable2"
+					"text": new FormMessage( null, "sqlDialog.pwdLable2.text" )
+					"font": #SwingDerivedFont0
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 11
+				} )
+				add( new FormComponent( "javax.swing.JSpinner" ) {
+					name: "qosSpinner"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					"model": new javax.swing.SpinnerNumberModel( 0, 0, 2, 1 )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 11
+					"hAlign": sfield com.jgoodies.forms.layout.CellConstraints LEFT
+					"gridX": 3
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "reset"
+					"text": new FormMessage( null, "sqlDialog.reset.text" )
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "resetClicked", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 13
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "submitBtn"
+					"text": new FormMessage( null, "sqlDialog.submitBtn.text" )
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "submitBtnClicked", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 13
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 5, 0 )
+			"size": new java.awt.Dimension( 440, 370 )
+		} )
+	}
+}

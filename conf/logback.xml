@@ -1,0 +1,127 @@
+<configuration debug="true" scan="true">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+<!--        定义日志输出内容格式-->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+<!--    属性配置-->
+<!--    日志文件名-->
+    <property name="LOG_Source" value="Source" />
+    <property name="LOG_Decode" value="Decode"/>
+    <property name="LOG_Record" value="Record"/>
+    <property name="LOG_Message" value="Message"/>
+
+    <!--定义日志文件的存储地址 不要在LogBack的配置中使用相对路径-->
+    <property name="LOG_DIR" value="./logs" />
+
+    <appender name="Source" class="ch.qos.logback.core.rolling.RollingFileAppender">
+<!--    日志文件保存路径-->
+        <file>${LOG_DIR}/${LOG_Source}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+<!--            滚动策略 每天一个gz压缩包-->
+            <fileNamePattern>${LOG_DIR}/%d{yyyy-MM-dd}/${LOG_Source}.log</fileNamePattern>
+<!--            保留30天的日志文件  -->
+            <maxHistory>30</maxHistory>
+            <!--按照文件大小拆分，日志文件不能超过1M，若超过1M，日志文件会以索引0开始 -->
+<!--            <totalSizeCap>1MB</totalSizeCap>-->
+        </rollingPolicy>
+        <encoder>
+<!--            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>-->
+            <pattern>%d{yyyy-MM/dd/-HH:mm:ss.SSS}   %-5level %logger{35} - %msg%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="Decode" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--    日志文件保存路径-->
+        <file>${LOG_DIR}/${LOG_Decode}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--            滚动策略 每天一个gz压缩包-->
+            <fileNamePattern>${LOG_DIR}/%d{yyyy-MM-dd}/${LOG_Decode}.zip</fileNamePattern>
+            <!--            保留30天的日志文件  -->
+            <maxHistory>30</maxHistory>
+            <!--按照文件大小拆分，日志文件不能超过1M，若超过1M，日志文件会以索引0开始 -->
+            <totalSizeCap>1MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <!--            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>-->
+            <pattern>%d{yyyy-MM/dd/-HH:mm:ss.SSS}   %-5level %logger{35} - %msg%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="Record" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--    日志文件保存路径-->
+        <file>${LOG_DIR}/${LOG_Record}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--            滚动策略 每天一个zip压缩包-->
+            <fileNamePattern>${LOG_DIR}/%d{yyyy-MM-dd}/${LOG_Record}.zip</fileNamePattern>
+            <!--            保留30天的日志文件  -->
+            <maxHistory>30</maxHistory>
+            <!--按照文件大小拆分，日志文件不能超过1M，若超过1M，日志文件会以索引0开始 -->
+            <totalSizeCap>1MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <!--            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>-->
+            <pattern>%d{yyyy-MM/dd/-HH:mm:ss.SSS}   %-5level %logger{35} - %msg%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="Message" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--    日志文件保存路径-->
+        <file>${LOG_DIR}/${LOG_Message}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--            滚动策略 每天一个zip压缩包-->
+            <fileNamePattern>${LOG_DIR}/%d{yyyy-MM-dd}/${LOG_Message}.zip</fileNamePattern>
+            <!--            保留30天的日志文件  -->
+            <maxHistory>30</maxHistory>
+            <!--按照文件大小拆分，日志文件不能超过1M，若超过1M，日志文件会以索引0开始 -->
+            <totalSizeCap>1MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <!--            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>-->
+            <pattern>%d{yyyy-MM/dd/-HH:mm:ss.SSS}   %-5level %logger{35} - %msg%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+    </appender>
+    <!--异步日志-->
+    <appender name="Source-Async-Appender" class="ch.qos.logback.classic.AsyncAppender">
+        <!--指定某个具体的appender-->
+        <appender-ref ref="Source"/>
+    </appender>
+
+    <appender name="Decode-Async-Appender" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="Decode"/>
+    </appender>
+
+    <appender name="Record-Async-Appender"  class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="Record"/>
+    </appender>
+
+    <appender name="Message-Async-Appender"  class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="Message"/>
+    </appender>
+
+
+    <logger name="SourceLogger" level="ALL" >
+        <appender-ref ref="Source-Async-Appender" />
+    </logger>
+    <logger name="DecodeLogger" level="ALL" >
+        <appender-ref ref="Decode-Async-Appender" />
+    </logger>
+    <logger name="RecordLogger" level="ALL" >
+        <appender-ref ref="Record-Async-Appender" />
+    </logger>
+    <logger name="MessageLogger" level="All">
+        <appender-ref ref="Message-Async-Appender"/>
+    </logger>
+
+
+    <root level="ALL">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
