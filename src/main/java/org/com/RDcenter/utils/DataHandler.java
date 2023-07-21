@@ -2,37 +2,34 @@ package org.com.RDcenter.utils;
 
 import com.alibaba.fastjson2.JSONObject;
 import org.com.RDcenter.model.Device;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Device 数据验证和解析
- *
  */
 public class DataHandler {
+    private final Logger messageLogger = LoggerFactory.getLogger("MessageLogger");
+
     /**
      * 数据验证
      * @param s
      * @return
      */
-    public  String dataVerify(String s) {
-        JSONObject jsonObject=null;
+    public String dataVerify(String s) {
+        JSONObject jsonObject = null;
         try {
-            jsonObject=JSONObject.parse(s);
-        }catch (Exception e){
-            /**
-             * todo
-             * 非JSON数据
-             */
+            jsonObject = JSONObject.parse(s);
+        } catch (Exception e) {
+            messageLogger.warn("数据不是json数据: {} ", s);
             return null;
         }
-        String data=jsonObject.getString("value");
+        String data = jsonObject.getString("value");
 
-        if(CRCValidate(data))
+        if (CRCValidate(data))
             return data;
-        else{
-            /**
-             * todo
-             * 校验失败
-             */
+        else {
+            messageLogger.warn("CRC校验失败 {} ", data);
             return null;
         }
     }
@@ -40,13 +37,14 @@ public class DataHandler {
     /**
      * 数据验证后才能进行解析
      * 解析数据value
+     *
      * @param data
      * @return
      */
-    public  Device parseData(String data) {
+    public Device parseData(String data) {
         Device device = new Device();
         device.setVersion(data.substring(8, 10));
-        device.setFlag(HexTool.hexToInt(data.substring(10,12)));
+        device.setFlag(HexTool.hexToInt(data.substring(10, 12)));
 
         device.setImei(HexTool.hexToAscii(data.substring(12, 42)));
         device.setImsi(HexTool.hexToAscii(data.substring(12, 42)));
@@ -80,7 +78,7 @@ public class DataHandler {
                     break;
                 case 5:
                     device.setTemp(HexTool.hexToSignShort(strCmdData.substring(56, 60)) * 1.0 / 100);
-                    device.setHumidity(HexTool.hexToSignShort(strCmdData.substring(60, 64))*1.0/100);
+                    device.setHumidity(HexTool.hexToSignShort(strCmdData.substring(60, 64)) * 1.0 / 100);
                     break;
                 case 6:
                     device.setO2(HexTool.hexToSignShort(strCmdData.substring(56, 60)) * 1.0 / 10);
@@ -113,7 +111,7 @@ public class DataHandler {
         return device;
     }
 
-    public static String deviceTOString(Device device){
+    public static String deviceTOString(Device device) {
         StringBuilder result = new StringBuilder();
         switch (device.getFlag()) {
             case 0:
@@ -149,9 +147,9 @@ public class DataHandler {
         result.append("设备编号: " + device.getMac() + " | ");
         result.append("电池电压: " + device.getVoltage() + "mV | ");
         result.append("电量: " + device.getQuantity() + "% | ");
-        result.append("告警码: " + String.valueOf(device.getWarningcode())+ " | ");
+        result.append("告警码: " + String.valueOf(device.getWarningcode()) + " | ");
         result.append("\r\n");
-        result.append("传感器类型: " + String.valueOf(device.getSensornum())+ " | ");
+        result.append("传感器类型: " + String.valueOf(device.getSensornum()) + " | ");
         switch (device.getSensornum()) {
             case 1:
                 result.append("湿度2: " + device.getTemp2() + "°C");
@@ -193,10 +191,11 @@ public class DataHandler {
 
     /**
      * CRC16-x25 校验
+     *
      * @param data
      * @return
      */
-      protected boolean CRCValidate(String data) {
+    protected boolean CRCValidate(String data) {
         String CRC = data.substring(data.length() - 8, data.length() - 4);
         data = data.substring(0, data.length() - 8);
         byte[] culCRC = new byte[data.length() / 2];

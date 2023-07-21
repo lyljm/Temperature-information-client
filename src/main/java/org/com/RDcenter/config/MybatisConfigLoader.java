@@ -13,9 +13,7 @@ import java.util.Properties;
 
 public class MybatisConfigLoader {
     private static SqlSessionFactory sqlSessionFactory;
-//    static {
-//
-//    }
+
     public static void reloadConfig(){
         try {
             //获取 SqlSessionFactory对象

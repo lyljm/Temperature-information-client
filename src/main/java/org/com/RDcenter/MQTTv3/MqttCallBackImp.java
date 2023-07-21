@@ -36,7 +36,6 @@ public class MqttCallBackImp implements MqttCallback {
                 break;
             }
         }
-
     }
 
     public void messageArrived(String s, MqttMessage mqttMessage) throws Exception {
